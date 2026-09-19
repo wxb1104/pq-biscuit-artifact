@@ -1,0 +1,102 @@
+{
+  "mldsa87>fndsa512": {
+    "root": "mldsa87",
+    "atten": "fndsa512",
+    "size_intercept": 11909.5,
+    "size_per_hop": 1587.49,
+    "size_r2": 1.0,
+    "uniform_root_n0": 11909,
+    "verify_intercept_us": 127.93,
+    "verify_per_hop_us": 36.78,
+    "verify_r2": 0.99983,
+    "n10": {
+      "mixed_bytes": 27786,
+      "uniform_root_bytes": 84459,
+      "size_saving_pct": 67.1,
+      "mixed_verify_us": 497.26,
+      "uniform_root_verify_us": 818.68,
+      "uniform_root_verify_basis": "measured",
+      "verify_saving_pct": 39.3
+    }
+  },
+  "slhdsa256s>fndsa512": {
+    "root": "slhdsa256s",
+    "atten": "fndsa512",
+    "size_intercept": 59714.0,
+    "size_per_hop": 1587.74,
+    "size_r2": 0.999999,
+    "uniform_root_n0": 59713,
+    "verify_intercept_us": 876.12,
+    "verify_per_hop_us": 39.0,
+    "verify_r2": 0.96194,
+    "n10": {
+      "mixed_bytes": 75579,
+      "uniform_root_bytes": 358633,
+      "size_saving_pct": 78.9,
+      "mixed_verify_us": 1258.54,
+      "uniform_root_verify_us": 5115.88,
+      "uniform_root_verify_basis": "extrapolated",
+      "verify_saving_pct": 75.4
+    }
+  },
+  "slhdsa128s>mldsa44": {
+    "root": "slhdsa128s",
+    "atten": "mldsa44",
+    "size_intercept": 15805.0,
+    "size_per_hop": 3768.0,
+    "size_r2": 1.0,
+    "uniform_root_n0": 15805,
+    "verify_intercept_us": 405.34,
+    "verify_per_hop_us": 31.21,
+    "verify_r2": 0.98822,
+    "n10": {
+      "mixed_bytes": 53485,
+      "uniform_root_bytes": 95025,
+      "size_saving_pct": 43.7,
+      "mixed_verify_us": 710.81,
+      "uniform_root_verify_us": 2370.65,
+      "uniform_root_verify_basis": "extrapolated",
+      "verify_saving_pct": 70.0
+    }
+  },
+  "mldsa87>mldsa44": {
+    "root": "mldsa87",
+    "atten": "mldsa44",
+    "size_intercept": 11909.0,
+    "size_per_hop": 3768.0,
+    "size_r2": 1.0,
+    "uniform_root_n0": 11909,
+    "verify_intercept_us": 124.83,
+    "verify_per_hop_us": 30.81,
+    "verify_r2": 0.99996,
+    "n10": {
+      "mixed_bytes": 49589,
+      "uniform_root_bytes": 84459,
+      "size_saving_pct": 41.3,
+      "mixed_verify_us": 432.99,
+      "uniform_root_verify_us": 818.68,
+      "uniform_root_verify_basis": "measured",
+      "verify_saving_pct": 47.1
+    }
+  },
+  "slhdsa128s>fndsa512": {
+    "root": "slhdsa128s",
+    "atten": "fndsa512",
+    "size_intercept": 15806.0,
+    "size_per_hop": 1587.99,
+    "size_r2": 0.999999,
+    "uniform_root_n0": 15805,
+    "verify_intercept_us": 411.23,
+    "verify_per_hop_us": 35.53,
+    "verify_r2": 0.99674,
+    "n10": {
+      "mixed_bytes": 31688,
+      "uniform_root_bytes": 95025,
+      "size_saving_pct": 66.7,
+      "mixed_verify_us": 772.28,
+      "uniform_root_verify_us": 2370.65,
+      "uniform_root_verify_basis": "extrapolated",
+      "verify_saving_pct": 67.4
+    }
+  }
+}

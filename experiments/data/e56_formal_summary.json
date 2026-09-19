@@ -1,0 +1,324 @@
+{
+  "verify_us_per_sig": {
+    "avx2": {
+      "Ed25519": 31.36289263803682,
+      "Mldsa44": 30.631423312883445,
+      "Mldsa65": 43.752003067484665,
+      "Mldsa87": 65.7219693251534,
+      "Fndsa512": 33.318009202453986,
+      "Fndsa1024": 67.16352760736197,
+      "HybridEdMldsa44": 72.51702147239266,
+      "HybridEdFndsa512": 73.9157239263804,
+      "Slhdsa128s": 199.67750000000007,
+      "Slhdsa128f": 503.91050000000007,
+      "Slhdsa256s": 415.273,
+      "Slhdsa256f": 845.8390000000005
+    },
+    "portable": {
+      "Ed25519": 32.23570858895706,
+      "Mldsa44": 78.35765644171781,
+      "Mldsa65": 122.77282822085894,
+      "Mldsa87": 198.51506441717797,
+      "Fndsa512": 37.491524539877304,
+      "Fndsa1024": 72.91902453987731,
+      "HybridEdMldsa44": 119.45272085889572,
+      "HybridEdFndsa512": 72.36356441717794,
+      "Slhdsa128s": 400.1795000000001,
+      "Slhdsa128f": 1142.494,
+      "Slhdsa256s": 921.8209999999998,
+      "Slhdsa256f": 1779.7300000000005
+    }
+  },
+  "verify_speedup_portable_over_avx2": {
+    "Ed25519": 1.0278295742995878,
+    "Mldsa44": 2.55808081920767,
+    "Mldsa65": 2.8061075976679217,
+    "Mldsa87": 3.020528241249786,
+    "Fndsa512": 1.1252630465422864,
+    "Fndsa1024": 1.085693785564123,
+    "HybridEdMldsa44": 1.647236999445317,
+    "HybridEdFndsa512": 0.9790009564034251,
+    "Slhdsa128s": 2.0041291582677063,
+    "Slhdsa128f": 2.2672557924472696,
+    "Slhdsa256s": 2.219795170887584,
+    "Slhdsa256f": 2.1041001892795195
+  },
+  "phases_n2_median_us": {
+    "avx2": {
+      "authority_build": {
+        "Ed25519": 24.122,
+        "Mldsa44": 65.153,
+        "Mldsa65": 106.865,
+        "Mldsa87": 127.287,
+        "Fndsa512": 4344.444,
+        "Fndsa1024": 13384.106,
+        "HybridEdMldsa44": 116.174,
+        "HybridEdFndsa512": 4233.667,
+        "Slhdsa128s": 130513.48,
+        "Slhdsa128f": 5743.505,
+        "Slhdsa256s": 210687.858,
+        "Slhdsa256f": 21430.995
+      },
+      "append_hop": {
+        "Ed25519": 35.502,
+        "Mldsa44": 70.574,
+        "Mldsa65": 115.417,
+        "Mldsa87": 147.122,
+        "Fndsa512": 4323.936,
+        "Fndsa1024": 12659.961,
+        "HybridEdMldsa44": 137.388,
+        "HybridEdFndsa512": 4242.754,
+        "Slhdsa128s": 137634.851,
+        "Slhdsa128f": 5862.227,
+        "Slhdsa256s": 210980.274,
+        "Slhdsa256f": 21119.193
+      },
+      "seal": {
+        "Ed25519": 24.085,
+        "Mldsa44": 62.265,
+        "Mldsa65": 138.108,
+        "Mldsa87": 107.192,
+        "Fndsa512": 152.309,
+        "Fndsa1024": 296.368,
+        "HybridEdMldsa44": 81.41,
+        "HybridEdFndsa512": 175.93,
+        "Slhdsa128s": 115594.333,
+        "Slhdsa128f": 5707.048,
+        "Slhdsa256s": 201732.707,
+        "Slhdsa256f": 20050.833
+      },
+      "verify_n2": {
+        "Ed25519": 119.571,
+        "Mldsa44": 113.189,
+        "Mldsa65": 164.395,
+        "Mldsa87": 248.923,
+        "Fndsa512": 127.006,
+        "Fndsa1024": 247.974,
+        "HybridEdMldsa44": 269.17,
+        "HybridEdFndsa512": 275.744,
+        "Slhdsa128s": 749.906,
+        "Slhdsa128f": 1974.086,
+        "Slhdsa256s": 1620.332,
+        "Slhdsa256f": 3005.158
+      },
+      "authorize": {
+        "Ed25519": 8.857,
+        "Mldsa44": 8.499,
+        "Mldsa65": 8.692,
+        "Mldsa87": 8.709,
+        "Fndsa512": 9.363,
+        "Fndsa1024": 8.333,
+        "HybridEdMldsa44": 8.373,
+        "HybridEdFndsa512": 8.814,
+        "Slhdsa128s": 10.484,
+        "Slhdsa128f": 9.29,
+        "Slhdsa256s": 9.555,
+        "Slhdsa256f": 9.525
+      }
+    },
+    "portable": {
+      "authority_build": {
+        "Ed25519": 23.657,
+        "Mldsa44": 255.107,
+        "Mldsa65": 444.797,
+        "Mldsa87": 577.946,
+        "Fndsa512": 11844.557,
+        "Fndsa1024": 30655.085,
+        "HybridEdMldsa44": 308.098,
+        "HybridEdFndsa512": 11410.651,
+        "Slhdsa128s": 420839.194,
+        "Slhdsa128f": 19707.529,
+        "Slhdsa256s": 645955.747,
+        "Slhdsa256f": 65944.23
+      },
+      "append_hop": {
+        "Ed25519": 35.034,
+        "Mldsa44": 272.517,
+        "Mldsa65": 440.733,
+        "Mldsa87": 543.38,
+        "Fndsa512": 12694.986,
+        "Fndsa1024": 30302.115,
+        "HybridEdMldsa44": 320.019,
+        "HybridEdFndsa512": 12007.165,
+        "Slhdsa128s": 445982.226,
+        "Slhdsa128f": 19621.292,
+        "Slhdsa256s": 630386.511,
+        "Slhdsa256f": 63130.909
+      },
+      "seal": {
+        "Ed25519": 23.718,
+        "Mldsa44": 201.386,
+        "Mldsa65": 285.623,
+        "Mldsa87": 279.534,
+        "Fndsa512": 2809.61,
+        "Fndsa1024": 5813.647,
+        "HybridEdMldsa44": 554.253,
+        "HybridEdFndsa512": 2794.939,
+        "Slhdsa128s": 370349.183,
+        "Slhdsa128f": 18853.754,
+        "Slhdsa256s": 584160.632,
+        "Slhdsa256f": 60153.3
+      },
+      "verify_n2": {
+        "Ed25519": 127.422,
+        "Mldsa44": 303.327,
+        "Mldsa65": 480.762,
+        "Mldsa87": 783.982,
+        "Fndsa512": 128.622,
+        "Fndsa1024": 255.233,
+        "HybridEdMldsa44": 465.768,
+        "HybridEdFndsa512": 294.833,
+        "Slhdsa128s": 1669.044,
+        "Slhdsa128f": 4608.132,
+        "Slhdsa256s": 3600.382,
+        "Slhdsa256f": 6741.339
+      },
+      "authorize": {
+        "Ed25519": 8.749,
+        "Mldsa44": 8.504,
+        "Mldsa65": 8.454,
+        "Mldsa87": 8.785,
+        "Fndsa512": 8.408,
+        "Fndsa1024": 8.322,
+        "HybridEdMldsa44": 8.094,
+        "HybridEdFndsa512": 8.729,
+        "Slhdsa128s": 10.148,
+        "Slhdsa128f": 11.067,
+        "Slhdsa256s": 9.758,
+        "Slhdsa256f": 10.86
+      }
+    }
+  },
+  "deterministic_size_identical_across_builds": true,
+  "sealed_fit": {
+    "Ed25519": [
+      216.0000000000001,
+      126.0
+    ],
+    "Mldsa44": [
+      6215.0,
+      3767.999999999999
+    ],
+    "Mldsa65": [
+      8632.999999999995,
+      5297.0
+    ],
+    "Mldsa87": [
+      11909.000000000004,
+      7255.000000000001
+    ],
+    "Fndsa512": [
+      2269.5000000000005,
+      1587.681818181818
+    ],
+    "Fndsa1024": [
+      4393.545454545459,
+      3101.1636363636367
+    ],
+    "HybridEdMldsa44": [
+      6375.0,
+      3864.0000000000005
+    ],
+    "HybridEdFndsa512": [
+      2429.500000000002,
+      1684.2636363636364
+    ],
+    "Slhdsa128s": [
+      15804.999999999998,
+      7921.999999999999
+    ],
+    "Slhdsa128f": [
+      34273.0,
+      17156.0
+    ],
+    "Slhdsa256s": [
+      59713.000000000015,
+      29892.0
+    ],
+    "Slhdsa256f": [
+      99841.00000000013,
+      49956.0
+    ]
+  },
+  "fn_signature_len": [
+    {
+      "tag": "avx2",
+      "alg": "Fndsa1024",
+      "n": 51,
+      "sig_min": 1260.0,
+      "sig_q1": 1267.0,
+      "sig_median": 1269.0,
+      "sig_q3": 1272.0,
+      "sig_max": 1281.0,
+      "cap": 1280,
+      "typical": 1269,
+      "headroom_to_cap": -1.0
+    },
+    {
+      "tag": "avx2",
+      "alg": "Fndsa512",
+      "n": 51,
+      "sig_min": 649.0,
+      "sig_q1": 652.0,
+      "sig_median": 653.0,
+      "sig_q3": 655.0,
+      "sig_max": 660.0,
+      "cap": 666,
+      "typical": 653,
+      "headroom_to_cap": 6.0
+    },
+    {
+      "tag": "avx2",
+      "alg": "HybridEdFndsa512",
+      "n": 51,
+      "sig_min": 645.0,
+      "sig_q1": 651.0,
+      "sig_median": 653.0,
+      "sig_q3": 655.0,
+      "sig_max": 659.0,
+      "cap": 666,
+      "typical": 653,
+      "headroom_to_cap": 7.0
+    },
+    {
+      "tag": "portable",
+      "alg": "Fndsa1024",
+      "n": 51,
+      "sig_min": 1258.0,
+      "sig_q1": 1265.5,
+      "sig_median": 1269.0,
+      "sig_q3": 1272.0,
+      "sig_max": 1279.0,
+      "cap": 1280,
+      "typical": 1269,
+      "headroom_to_cap": 1.0
+    },
+    {
+      "tag": "portable",
+      "alg": "Fndsa512",
+      "n": 51,
+      "sig_min": 648.0,
+      "sig_q1": 650.0,
+      "sig_median": 653.0,
+      "sig_q3": 655.0,
+      "sig_max": 659.0,
+      "cap": 666,
+      "typical": 653,
+      "headroom_to_cap": 7.0
+    },
+    {
+      "tag": "portable",
+      "alg": "HybridEdFndsa512",
+      "n": 51,
+      "sig_min": 644.0,
+      "sig_q1": 651.0,
+      "sig_median": 653.0,
+      "sig_q3": 654.0,
+      "sig_max": 659.0,
+      "cap": 666,
+      "typical": 653,
+      "headroom_to_cap": 7.0
+    }
+  ],
+  "fips206_status": "FN-DSA still a draft (IPD late 2025); final expected late 2026/early 2027 per NIST roadmap & IETF COSE/LAMPS drafts, accessed 2026-09"
+}

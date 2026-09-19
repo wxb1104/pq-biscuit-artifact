@@ -1,0 +1,455 @@
+{
+  "note": "Single E5-4 overhead model (fitted on Ed/ML-DSA-44 only) validated against all algorithms without retuning; FN uses measured variable signature length, FIPS cap kept for conservative capacity.",
+  "size_fits": {
+    "ed25519": {
+      "sealed": {
+        "intercept": 216.0,
+        "slope": 126.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 184.0,
+        "slope": 126.0,
+        "r2": 1.0
+      }
+    },
+    "mldsa44": {
+      "sealed": {
+        "intercept": 6215.0,
+        "slope": 3768.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 7667.0,
+        "slope": 3768.0,
+        "r2": 1.0
+      }
+    },
+    "mldsa65": {
+      "sealed": {
+        "intercept": 8633.0,
+        "slope": 5297.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 11308.0,
+        "slope": 5297.0,
+        "r2": 1.0
+      }
+    },
+    "mldsa87": {
+      "sealed": {
+        "intercept": 11909.0,
+        "slope": 7255.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 14770.0,
+        "slope": 7255.0,
+        "r2": 1.0
+      }
+    },
+    "fndsa512": {
+      "sealed": {
+        "intercept": 2269.9,
+        "slope": 1588.23,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 3791.7,
+        "slope": 1588.34,
+        "r2": 1.0
+      }
+    },
+    "fndsa1024": {
+      "sealed": {
+        "intercept": 4395.4,
+        "slope": 3099.9,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 7225.5,
+        "slope": 3099.65,
+        "r2": 1.0
+      }
+    },
+    "slhdsa128s": {
+      "sealed": {
+        "intercept": 15805.0,
+        "slope": 7922.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 8043.0,
+        "slope": 7922.0,
+        "r2": 1.0
+      }
+    },
+    "slhdsa128f": {
+      "sealed": {
+        "intercept": 34273.0,
+        "slope": 17156.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 17277.0,
+        "slope": 17156.0,
+        "r2": 1.0
+      }
+    },
+    "slhdsa256s": {
+      "sealed": {
+        "intercept": 59713.0,
+        "slope": 29892.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 30111.0,
+        "slope": 29892.0,
+        "r2": 1.0
+      }
+    },
+    "slhdsa256f": {
+      "sealed": {
+        "intercept": 99841.0,
+        "slope": 49956.0,
+        "r2": 1.0
+      },
+      "unsealed": {
+        "intercept": 50175.0,
+        "slope": 49956.0,
+        "r2": 1.0
+      }
+    }
+  },
+  "model_validation_pct": {
+    "ed25519": {
+      "sealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    },
+    "mldsa44": {
+      "sealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    },
+    "mldsa65": {
+      "sealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    },
+    "mldsa87": {
+      "sealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    },
+    "fndsa512": {
+      "sealed": {
+        "model_max_abs_pct": 0.388,
+        "model_mean_abs_pct": 0.148,
+        "model_signed_pct_at_n2": -0.018
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.186,
+        "model_mean_abs_pct": 0.116,
+        "model_signed_pct_at_n2": 0.043
+      }
+    },
+    "fndsa1024": {
+      "sealed": {
+        "model_max_abs_pct": 0.16,
+        "model_mean_abs_pct": 0.065,
+        "model_signed_pct_at_n2": -0.16
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.134,
+        "model_mean_abs_pct": 0.054,
+        "model_signed_pct_at_n2": -0.134
+      }
+    },
+    "slhdsa128s": {
+      "sealed": {
+        "model_max_abs_pct": 0.012,
+        "model_mean_abs_pct": 0.011,
+        "model_signed_pct_at_n2": 0.009
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.025,
+        "model_mean_abs_pct": 0.015,
+        "model_signed_pct_at_n2": 0.017
+      }
+    },
+    "slhdsa128f": {
+      "sealed": {
+        "model_max_abs_pct": 0.003,
+        "model_mean_abs_pct": 0.001,
+        "model_signed_pct_at_n2": -0.001
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.006,
+        "model_mean_abs_pct": 0.001,
+        "model_signed_pct_at_n2": 0.002
+      }
+    },
+    "slhdsa256s": {
+      "sealed": {
+        "model_max_abs_pct": 0.002,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": -0.001
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    },
+    "slhdsa256f": {
+      "sealed": {
+        "model_max_abs_pct": 0.001,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": -0.001
+      },
+      "unsealed": {
+        "model_max_abs_pct": 0.0,
+        "model_mean_abs_pct": 0.0,
+        "model_signed_pct_at_n2": 0.0
+      }
+    }
+  },
+  "real_capacity_sealed": {
+    "ed25519": {
+      "4096": 20,
+      "8192": 20,
+      "16384": 20
+    },
+    "mldsa44": {
+      "4096": -1,
+      "8192": 0,
+      "16384": 2
+    },
+    "mldsa65": {
+      "4096": -1,
+      "8192": -1,
+      "16384": 1
+    },
+    "mldsa87": {
+      "4096": -1,
+      "8192": -1,
+      "16384": 0
+    },
+    "fndsa512": {
+      "4096": 1,
+      "8192": 3,
+      "16384": 8
+    },
+    "fndsa1024": {
+      "4096": -1,
+      "8192": 1,
+      "16384": 3
+    },
+    "slhdsa128s": {
+      "4096": -1,
+      "8192": -1,
+      "16384": 0
+    },
+    "slhdsa128f": {
+      "4096": -1,
+      "8192": -1,
+      "16384": -1
+    },
+    "slhdsa256s": {
+      "4096": -1,
+      "8192": -1,
+      "16384": -1
+    },
+    "slhdsa256f": {
+      "4096": -1,
+      "8192": -1,
+      "16384": -1
+    }
+  },
+  "verify_chain_fit": {
+    "ed25519": {
+      "slope_us_per_sig": 33.77,
+      "intercept_us": 61.7,
+      "r2": 0.99988,
+      "nmax": 20
+    },
+    "mldsa44": {
+      "slope_us_per_sig": 31.98,
+      "intercept_us": 52.51,
+      "r2": 0.99995,
+      "nmax": 20
+    },
+    "mldsa65": {
+      "slope_us_per_sig": 47.89,
+      "intercept_us": 82.35,
+      "r2": 0.99956,
+      "nmax": 20
+    },
+    "mldsa87": {
+      "slope_us_per_sig": 69.36,
+      "intercept_us": 128.93,
+      "r2": 0.99994,
+      "nmax": 20
+    },
+    "fndsa512": {
+      "slope_us_per_sig": 36.56,
+      "intercept_us": 57.66,
+      "r2": 0.9998,
+      "nmax": 20
+    },
+    "fndsa1024": {
+      "slope_us_per_sig": 70.22,
+      "intercept_us": 118.22,
+      "r2": 0.99973,
+      "nmax": 20
+    },
+    "slhdsa128s": {
+      "slope_us_per_sig": 198.22,
+      "intercept_us": 388.42,
+      "r2": 0.99948,
+      "nmax": 2
+    },
+    "slhdsa128f": {
+      "slope_us_per_sig": 517.83,
+      "intercept_us": 1045.54,
+      "r2": 0.99902,
+      "nmax": 2
+    },
+    "slhdsa256s": {
+      "slope_us_per_sig": 428.91,
+      "intercept_us": 826.75,
+      "r2": 0.99997,
+      "nmax": 2
+    },
+    "slhdsa256f": {
+      "slope_us_per_sig": 797.73,
+      "intercept_us": 1549.57,
+      "r2": 0.99987,
+      "nmax": 2
+    }
+  },
+  "phase_median_us_at_n2": {
+    "ed25519": {
+      "authority_build": 25.1,
+      "append_hop": 42.8,
+      "seal": 25.33,
+      "verify_chain": 131.02,
+      "authorize": 9.1
+    },
+    "mldsa44": {
+      "authority_build": 73.19,
+      "append_hop": 74.75,
+      "seal": 37.8,
+      "verify_chain": 116.14,
+      "authorize": 9.04
+    },
+    "mldsa65": {
+      "authority_build": 127.99,
+      "append_hop": 124.1,
+      "seal": 205.03,
+      "verify_chain": 178.57,
+      "authorize": 9.31
+    },
+    "mldsa87": {
+      "authority_build": 150.02,
+      "append_hop": 161.4,
+      "seal": 173.53,
+      "verify_chain": 265.2,
+      "authorize": 9.31
+    },
+    "fndsa512": {
+      "authority_build": 4742.64,
+      "append_hop": 4293.37,
+      "seal": 154.37,
+      "verify_chain": 127.5,
+      "authorize": 8.95
+    },
+    "fndsa1024": {
+      "authority_build": 12598.89,
+      "append_hop": 13090.97,
+      "seal": 299.31,
+      "verify_chain": 254.59,
+      "authorize": 9.1
+    },
+    "slhdsa128s": {
+      "authority_build": 135172.06,
+      "append_hop": 135564.72,
+      "seal": 120222.06,
+      "verify_chain": 782.25,
+      "authorize": 10.13
+    },
+    "slhdsa128f": {
+      "authority_build": 6311.06,
+      "append_hop": 6187.01,
+      "seal": 5925.22,
+      "verify_chain": 2071.85,
+      "authorize": 9.67
+    },
+    "slhdsa256s": {
+      "authority_build": 222531.56,
+      "append_hop": 222311.32,
+      "seal": 207454.37,
+      "verify_chain": 1683.33,
+      "authorize": 9.95
+    },
+    "slhdsa256f": {
+      "authority_build": 22035.82,
+      "append_hop": 21993.99,
+      "seal": 21348.12,
+      "verify_chain": 3150.29,
+      "authorize": 9.72
+    }
+  },
+  "reps": {
+    "ed25519": 101,
+    "mldsa44": 101,
+    "mldsa65": 101,
+    "mldsa87": 101,
+    "fndsa512": 101,
+    "fndsa1024": 101,
+    "slhdsa128s": 5,
+    "slhdsa128f": 5,
+    "slhdsa256s": 5,
+    "slhdsa256f": 5
+  },
+  "fn_sig": {
+    "measured": {
+      "fndsa512": 653,
+      "fndsa1024": 1269
+    },
+    "fips_cap": {
+      "fndsa512": 666,
+      "fndsa1024": 1280
+    }
+  }
+}

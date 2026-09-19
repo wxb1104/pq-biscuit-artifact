@@ -1,0 +1,7 @@
+[package]
+name = "pqbiscuit"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+biscuit-auth = { path = "vendor/biscuit-auth" }

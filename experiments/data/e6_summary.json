@@ -1,0 +1,111 @@
+{
+  "fidelity": {
+    "pass": 98,
+    "fail": 0,
+    "na": 10
+  },
+  "pregen": {
+    "Ed25519": {
+      "keygen_us": 15.214,
+      "sign_only_us": 23.278,
+      "realtime_us": 34.178,
+      "online_saving_pct": 31.891860260986594
+    },
+    "ML-DSA-44": {
+      "keygen_us": 16.624,
+      "sign_only_us": 56.041,
+      "realtime_us": 75.7,
+      "online_saving_pct": 25.969616908850735
+    },
+    "ML-DSA-65": {
+      "keygen_us": 28.165,
+      "sign_only_us": 87.439,
+      "realtime_us": 116.159,
+      "online_saving_pct": 24.724730756979664
+    },
+    "ML-DSA-87": {
+      "keygen_us": 44.667,
+      "sign_only_us": 105.076,
+      "realtime_us": 150.788,
+      "online_saving_pct": 30.315409714300877
+    },
+    "FN-DSA-512": {
+      "keygen_us": 4330.343,
+      "sign_only_us": 149.374,
+      "realtime_us": 4357.617,
+      "online_saving_pct": 96.57211728336841
+    },
+    "FN-DSA-1024": {
+      "keygen_us": 12704.972,
+      "sign_only_us": 316.419,
+      "realtime_us": 13402.039,
+      "online_saving_pct": 97.63902343516536
+    },
+    "Hyb(Ed,ML44)": {
+      "keygen_us": 28.634,
+      "sign_only_us": 118.072,
+      "realtime_us": 149.521,
+      "online_saving_pct": 21.033165909805305
+    },
+    "Hyb(Ed,FN512)": {
+      "keygen_us": 4263.278,
+      "sign_only_us": 205.87,
+      "realtime_us": 4779.754,
+      "online_saving_pct": 95.6928745705323
+    },
+    "SLH-128s": {
+      "keygen_us": 15718.146,
+      "sign_only_us": 119115.567,
+      "realtime_us": 137016.765,
+      "online_saving_pct": 13.064969093380663
+    },
+    "SLH-128f": {
+      "keygen_us": 235.414,
+      "sign_only_us": 6286.32,
+      "realtime_us": 6533.961,
+      "online_saving_pct": 3.7900593529713533
+    },
+    "SLH-256s": {
+      "keygen_us": 15134.757,
+      "sign_only_us": 196234.188,
+      "realtime_us": 210670.363,
+      "online_saving_pct": 6.852494482102367
+    },
+    "SLH-256f": {
+      "keygen_us": 914.601,
+      "sign_only_us": 21323.708,
+      "realtime_us": 20854.847,
+      "online_saving_pct": -2.2482111712447406
+    }
+  },
+  "profiles_n20": {
+    "all Ed25519 (classical)": {
+      "size_KiB": 2.6572265625,
+      "verify_us": 753.25
+    },
+    "all ML-DSA-44": {
+      "size_KiB": 79.6484375,
+      "verify_us": 692.526
+    },
+    "all FN-DSA-512": {
+      "size_KiB": 33.2138671875,
+      "verify_us": 795.948
+    },
+    "all Hyb(Ed,ML44)": {
+      "size_KiB": 81.6796875,
+      "verify_us": 1658.991
+    },
+    "all Hyb(Ed,FN512)": {
+      "size_KiB": 35.255859375,
+      "verify_us": 1756.914
+    },
+    "ML-87 root + FN-512 hops": {
+      "size_KiB": 42.6494140625,
+      "verify_us": 885.325
+    },
+    "SLH-128s root + FN-512 hops": {
+      "size_KiB": 46.4296875,
+      "verify_us": 1166.333
+    }
+  }
+}
