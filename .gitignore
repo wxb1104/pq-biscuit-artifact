@@ -2,3 +2,7 @@ target/
 .target/
 __pycache__/
 *.rs.bk
+experiments/netbed/tokens/
+experiments/netbed/rootkeys/
+*.pcap
+*.pid
