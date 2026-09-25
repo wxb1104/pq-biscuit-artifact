@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering\small
+\caption{Deployment profiles. Sealed size at ten and twenty hops, whole-chain verification at twenty hops, and the maximum chain length fitting a $4/8/16$\,KiB cookie/header budget ($-1$: even the authority token exceeds it).}
+\label{tab:depprof}
+\begin{tabular}{lrrrrrr}
+\hline
+Profile & $S_{10}$ & $S_{20}$ & $V_{20}$ & 4\,KiB & 8\,KiB & 16\,KiB\\
+\hline
+Ed & 1.4 & 2.7 & 753 & 20 & 20 & 20 \\
+ML-DSA-44 & 42.9 & 79.6 & 693 & -1 & 0 & 2 \\
+FN-DSA-512 & 17.7 & 33.2 & 796 & 1 & 3 & 8 \\
+Hyb(Ed,ML-44) & 43.9 & 81.7 & 1659 & -1 & 0 & 2 \\
+Hyb(Ed,FN-512) & 18.8 & 35.3 & 1757 & 0 & 3 & 8 \\
+Mixed* (ours) & 27.1 & 42.6 & 885 & -1 & -1 & 2 \\
+Mixed-SLH & 30.9 & 46.4 & 1166 & -1 & -1 & 0 \\
+\hline
+\end{tabular}
+\end{table}

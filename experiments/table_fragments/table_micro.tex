@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering\small
+\caption{Cryptographic microbenchmark. Per-hop sealed size $b$, per-signature verification on AVX2 and portable builds, and the online cost removed by offline key pre-generation ($\eta$, Eq.~(18)).}
+\label{tab:micro}
+\begin{tabular}{lrrrr}
+\hline
+Scheme & $b$ (B) & verify AVX2 ($\mu$s) & verify portable ($\mu$s) & $\eta$ (\%)\\
+\hline
+Ed25519 & 126 & 31.4 & 32.3 & 31.9 \\
+ML-DSA-44 & 3768 & 30.5 & 78.5 & 26.0 \\
+ML-DSA-65 & 5297 & 43.8 & 122.7 & 24.7 \\
+ML-DSA-87 & 7255 & 65.9 & 198.8 & 30.3 \\
+FN-DSA-512 & 1588 & 33.2 & 37.2 & 96.6 \\
+FN-DSA-1024 & 3101 & 67.0 & 72.8 & 97.6 \\
+SLH-DSA-128s & 7922 & 199.7 & 400.2 & 13.1 \\
+SLH-DSA-128f & 17156 & 503.9 & 1142.5 & 3.8 \\
+SLH-DSA-256s & 29892 & 415.3 & 921.8 & 6.9 \\
+SLH-DSA-256f & 49956 & 845.8 & 1779.7 & -2.2 \\
+Hyb(Ed,ML-44) & 3864 & 72.4 & 119.4 & 21.0 \\
+Hyb(Ed,FN-512) & 1684 & 73.7 & 71.7 & 95.7 \\
+\hline
+\end{tabular}
+\end{table}

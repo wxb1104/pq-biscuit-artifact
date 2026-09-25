@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering\small
+\caption{Network effects at key operating points (depth twenty): server processing $t_{\rm srv}$ at zero emulated delay, the server share $\rho$ (Eq.~(21)) at $20$ and $100$\,ms paths, the $99$th-percentile latency at $5\%$ loss, completion over a $46$\,kbps link, and peak resident memory.}
+\label{tab:neteffects}
+\begin{tabular}{lrrrrrr}
+\hline
+Profile & $t_{\rm srv}$ (ms) & $\rho_{20}$ & $\rho_{100}$ & p99 loss (s) & 46\,kbps (s) & RSS (MiB)\\
+\hline
+Ed & 0.82 & 0.12 & 0.05 & 1.08 & 0.7 & 8.1 \\
+Mixed (ours) & 1.43 & 0.10 & 0.02 & 1.14 & 10.6 & 9.3 \\
+FN-DSA-512 & 2.39 & 0.15 & 0.04 & 1.14 & 8.3 & 9.3 \\
+ML-DSA-87 & 4.06 & 0.23 & 0.06 & 1.25 & 38.1 & 9.3 \\
+SLH-DSA-128f & 14.53 & 0.44 & 0.14 & 2.39 & 91.6 & 23.8 \\
+\hline
+\end{tabular}
+\end{table}

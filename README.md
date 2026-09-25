@@ -253,28 +253,35 @@ $\tau\in\{1,5,20,50,100,200\}$ ms, loss $\in\{0,1,3,5\}\%$, rates down to
 segmentation offloads are disabled so a wire capture shows real MSS-sized
 segments, counted against $N_{\uparrow}=\lceil S_{\uparrow}/M\rceil$.
 
-## 7. Mapping to paper figures and headline results
+## 7. Mapping to paper figures, tables and headline results
 
-| Paper figure / claim | Raw data | Analysis → fitted output | Redraw → figure |
-|---|---|---|---|
-| Fidelity matrix (98 applicable checks PASS) | `e6_fidelity.csv` | `analyze_e6.py` → `e6_summary.json` | `redraw_micro.py` → `fidelity.png` |
-| Offline pre-generation (96.6–97.6% of FN-DSA online cost removed) | `e6_pregen.csv` | `analyze_e6.py` → `e6_summary.json` | `redraw_micro.py` → `pregen.png` |
-| Deployment profiles (20-hop FN-DSA-512 within 6% of Ed25519) | `e6_profiles_size.csv`, `e6_profiles_verify.csv` | `analyze_e6.py` → profile fits | `redraw_profiles.py` → `profiles.png` |
-| Verify scaling, AVX2 vs portable | `e56_latency_*.csv` | `analyze_formal_e56.py` → `formal_verify_slopes.csv`, `formal_speedup.csv` | `redraw_micro.py` → `verify_avx2_portable.png` |
-| Signing phases / authority & seal cost | `e56_latency_*.csv` | `analyze_formal_e56.py` → `formal_phases_n2.csv` | `redraw_micro.py` → `sign_phases.png` |
-| FN-DSA length vs FIPS cap | `e56_fnlen_*.csv` | `analyze_formal_e56.py` → `formal_fnlen.csv` | `redraw_micro.py` → `fnlen.png` |
-| Linear per-hop size/latency model | `e56_size_*.csv`, `e56_latency_*.csv` | `analyze_formal_e56.py` → `formal_size_fit.csv` (with R²) | `redraw_micro.py` → `size_vs_n.png`, `full_latency.png` |
-| Mixed strong-root/FN chains (≥2/3 size saving at depth 10) | `e55_mixed.csv` | `analyze_mixed_e55.py` → `e55_mixed_summary.json` | `redraw_micro.py` → `mixed_chains.png` |
-| Hybrid size / latency | `e55_hybrid_size.csv`, `e55_hybrid_latency.csv` | `analyze_hybrid_e55.py` → `e55_hybrid_summary.json` | `redraw_micro.py` → `hybrid_size.png`, `hybrid_latency.png` |
-| Cookie/header capacity | size models | `calibrate_e55.py` → `capacity_e55.csv` | (reported in tables) |
-| Primitive sizes/timings (FIPS cross-check) | `algostats.csv` | (reported directly) | — |
-| End-to-end latency vs RTT (cost amortized) | `net_latency.csv` | `analyze_net.py` → `en1_summary.csv`, `en1_fits.csv` | `redraw_net.py` → `netfig1_latency_rtt.png` |
-| Server-cost share $\rho=t_{\mathrm{srv}}/L$ vs RTT | `net_latency.csv` | `analyze_net.py` → `en1_fits.csv` | `redraw_net.py` → `netfig2_rho_rtt.png` |
-| Loss inflates the tail, 0% failures | `net_latency.csv` | `analyze_net.py` → `en2_loss.csv` | `redraw_net.py` → `netfig3_loss.png` |
-| Throughput verification-bound → network-bound | `net_throughput.csv` | `analyze_net.py` → `en3_throughput.csv` | `redraw_net.py` → `netfig4_throughput.png` |
-| Constrained-link completion linear in size | `net_latency.csv` | `analyze_net.py` → `en4_bandwidth.csv` | `redraw_net.py` → `netfig5_bandwidth.png` |
-| Wire segmentation matches $\lceil S/M\rceil$ | `net_segments_meas.csv` | `analyze_net.py` → `en5_segments.csv` | — |
-| Binary / resident-memory footprint | `net_footprint.csv` | `analyze_net.py` → `en6_footprint.csv` | — |
+The paper keeps five data figures for trends that need a curve, together with
+the mechanism figure, and reports point values in three compact summary tables
+produced by `experiments/scripts/build_tables.py` from the fitted analysis CSVs.
+The full per-scheme line plots remain reproducible from the raw data with the
+redraw scripts, which is why they are not all carried as separate figures.
+
+| Paper figure / table / claim | Raw data | Analysis → output |
+|---|---|---|
+| Mechanism figure (design section) | — | token/block flow schematic |
+| Fig: size vs depth (affine model, Eq. 15) | `e55_token_size.csv`, `e56_size_*.csv` | `analyze_formal_e56.py` → `formal_size_fit.csv`; `redraw_micro.py` → `size_vs_n.png` |
+| Table: cryptographic microbenchmark (per-hop $b$, verify AVX2/portable, pregen $\eta$) | `e56_latency_*.csv`, `e6_pregen.csv`, `e56_fnlen_*.csv`, `e55_hybrid_*.csv` | fitted slopes/speedups; **`scripts/build_tables.py` → `table_fragments/table_micro.tex`** |
+| Fig: end-to-end latency vs RTT (cost amortized) | `net_latency.csv` | `analyze_net.py` → `en1_summary/fits`; `redraw_net.py` → `netfig1_latency_rtt.png` |
+| Fig: loss inflates the tail, 0% failures | `net_latency.csv` | `analyze_net.py` → `en2_loss`; `redraw_net.py` → `netfig3_loss.png` |
+| Fig: throughput, verification-bound → network-bound | `net_throughput.csv` | `analyze_net.py` → `en3_throughput`; `redraw_net.py` → `netfig4_throughput.png` |
+| Table: network effects ($t_{\rm srv}$, $\rho$, loss p99, 46 kbps, RSS) | `net_latency.csv`, `net_footprint.csv` | `analyze_net.py` → en1/en2/en4/en6; **`build_tables.py` → `table_net.tex`** |
+| Fig: deployment profiles | `e6_profiles_size.csv`, `e6_profiles_verify.csv` | `analyze_e6.py`; `redraw_profiles.py` → `profiles.png` |
+| Table: deployment profiles ($S_{10}/S_{20}/V_{20}$, 4/8/16 KiB fit) | `e6_profiles_*.csv` | **`build_tables.py` → `table_prof.tex`** |
+| Mixed strong-root/FN chains (>=2/3 size saving at depth 10) | `e55_mixed.csv` | `analyze_mixed_e55.py` → `e55_mixed_summary.json` (values in profile table/text) |
+| Fidelity: 98 applicable checks PASS, 6000 fuzz, 0 escape | `e6_fidelity.csv`, `e6_fuzz.csv` | `analyze_e6.py` → `e6_summary.json` (reported in text) |
+| Wire segmentation matches $\lceil S/M\rceil$ | `net_segments_meas.csv` | `analyze_net.py` → `en5_segments.csv` |
+| Hybrid size/latency point values | `e55_hybrid_size.csv`, `e55_hybrid_latency.csv` | `analyze_hybrid_e55.py` (values in micro table) |
+| Cookie/header capacity | size models | `calibrate_e55.py` → `capacity_e55.csv` (values in profile table) |
+| Primitive sizes/timings (FIPS cross-check) | `algostats.csv` | reported directly |
+
+The three `table_fragments/*.tex` files are the exact table environments used in
+the manuscript; regenerate them after any re-run with
+`python3 experiments/scripts/build_tables.py`.
 
 The committed `data/` and `figures/` are the reference run used for the paper.
 Serialized sizes and pass/fail outcomes are deterministic and reproduce
