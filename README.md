@@ -17,16 +17,20 @@ render every figure from those outputs.
 1. **Functional fidelity / security bindings** — for every signature
    algorithm, the migrated token preserves Biscuit's seal/attenuate/verify
    semantics, Datalog allow/deny behaviour, root-key binding, tamper
-   rejection, third-party block rules and hybrid cross-combination rejection.
+   rejection, third-party block rules and hybrid cross-combination rejection,
+   extended by structural checks (f10–f11), an algorithm-policy downgrade
+   test (f12) and a 6000-mutation property-based fuzzing campaign that records
+   zero parser or authorization escapes.
 2. **End-to-end cost** — authority build, per-hop append, seal, full-chain
    verification and Datalog authorisation latency versus attenuation depth,
    for pure-PQ, hybrid classical/PQ and mixed chains.
 3. **Two build targets** — the default **AVX2** PQClean kernels and a
    SIMD-less **portable** `clean`-C build.
-4. **Serialized token size and transport capacity** — unsealed/sealed size
-   versus depth, fit of the per-hop linear size model, and the maximum number
-   of attenuation hops that fit in an HTTP cookie / authorization-header
-   budget.
+4. **Serialized token size, transport capacity and wire budget** —
+   unsealed/sealed size vs depth, fit of the per-hop linear size model, the
+   maximum hops that fit a cookie/header budget, and the raw/base64url/
+   Authorization-field byte budget compared with the default single-header
+   limits of nginx, AWS ALB and Cloudflare.
 5. **Offline key pre-generation** — the fraction of per-hop online cost
    removed when attenuation key pairs are pre-minted offline.
 6. **FN-DSA signature-length spread** — measured variable-length signatures
@@ -38,6 +42,10 @@ render every figure from those outputs.
    throughput versus concurrency, completion time over rate-limited links, wire
    segmentation, and verifier memory/binary footprint, measured behind a
    dependency-free HTTP/1.1 authorization service in a two-namespace testbed.
+9. **Statistical confidence** — non-parametric bootstrap 95% intervals
+   (10,000 resamples, fixed seeds) for every reported latency, chain-verify
+   cost, pre-generation saving, hybrid overhead, loss tail, throughput and
+   constrained-link completion.
 
 ## 2. Repository layout
 
@@ -69,7 +77,13 @@ pq-biscuit-artifact/
     │   ├── 02_measure_avx2.sh
     │   ├── 03_measure_portable.sh
     │   ├── 04_analyze.sh
-    │   └── run_all.sh
+    │   ├── run_all.sh
+    │   ├── ci_bootstrap.py            # bootstrap CIs for micro timings
+    │   ├── ci2_pregen_hybrid.py       # CIs for pregen saving & hybrid overhead
+    │   ├── ci3_network.py             # CIs for network latency/loss/throughput
+    │   ├── ci_n20_verify_rtt0.py      # zero-RTT chain-verify baseline CIs
+    │   └── budget_size.py             # raw/base64/header wire budget
+    ├── analysis/                      # bootstrap CI and wire-budget result CSV
     ├── data/                          # raw CSV (harness output) + derived CSV/JSON
     ├── figures/                       # paper figures (content-named; see table below)
     ├── figstyle.py                    # shared Okabe-Ito style, semantic colours, labels

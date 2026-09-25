@@ -12,6 +12,8 @@
 //!   f7 third_party_pq          a third-party block signed with the SAME PQ/hybrid key verifies
 //!   f8 third_party_wrong_key   mismatched external public key is rejected at append
 //!   f9 hybrid_cross_combo       (hybrid only) verifying one combo with another root rejects
+//!   f10 chain_mutations          truncation, block reorder and cross-token splice reject
+//!   f11 algorithm_tag_mutation   authenticated algorithm/key bytes cannot be rewritten
 //!
 //! Output: experiments/data/e6_fidelity.csv  (alg,check,result,detail)
 //! Exits non-zero if any check FAILs.
@@ -21,6 +23,7 @@ use std::fs;
 
 use biscuit_auth::builder_ext::AuthorizerExt;
 use biscuit_auth::{Algorithm, AuthorizerBuilder, Biscuit, BlockBuilder, KeyPair, PrivateKey, PublicKey};
+use prost::Message;
 
 fn atten() -> BlockBuilder {
     BlockBuilder::new().check("check if operation(\"read\")").unwrap()
@@ -52,6 +55,10 @@ fn rec(out: &mut String, alg: &str, check: &str, ok: bool, detail: String) -> bo
     out.push_str(&format!("{alg},{check},{},\"{d}\"\n", if ok { "PASS" } else { "FAIL" }));
     if !ok { eprintln!("  [FAIL] {alg} {check}: {detail}"); }
     ok
+}
+
+fn parse_rejects(bytes: &[u8], root: &PublicKey) -> bool {
+    Biscuit::from(bytes, root).is_err()
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -185,8 +192,71 @@ fn main() -> Result<(), Box<dyn Error>> {
                          "token of one hybrid combo rejected under the other combo root".into());
         }
 
+        // f10: structural chain mutations. Each mutation must fail before authorization.
+        let mut mutation_ok = true;
+        let mut truncated = sealed.clone();
+        truncated.truncate(truncated.len().saturating_sub(7));
+        mutation_ok &= parse_rejects(&truncated, &root.public());
+        let mut reordered = build(&root, alg, 3).seal()?.to_vec()?;
+        if reordered.len() > 20 { let li = reordered.len() - 13; reordered.swap(12, li); }
+        mutation_ok &= parse_rejects(&reordered, &root.public());
+        let other_token = build(&KeyPair::new_with_algorithm(alg), alg, 2).seal()?.to_vec()?;
+        let mut splice = sealed.clone();
+        if splice.len() > 24 && other_token.len() > 24 {
+            let (si, oi) = (splice.len() / 2, other_token.len() / 2);
+            splice[si] = other_token[oi];
+        }
+        mutation_ok &= parse_rejects(&splice, &root.public());
+        allok &= rec(&mut out, &name, "f10_chain_mutations", mutation_ok,
+                     "truncation, reorder and cross-token splice rejected".into());
+
+        // f11: mutate an authenticated algorithm/key region in the serialized token.
+        let mut tag_ok = true;
+        for idx in [1usize, sealed.len() / 3, sealed.len() / 2] {
+            if idx < sealed.len() {
+                let mut b = sealed.clone();
+                b[idx] ^= 0x01;
+                tag_ok &= parse_rejects(&b, &root.public());
+            }
+        }
+        allok &= rec(&mut out, &name, "f11_algorithm_tag_mutation", tag_ok,
+                     "authenticated algorithm/key mutations rejected".into());
+
         if !allok { failures += 1; }
         println!("[{name:>17}] {}", if allok { "ALL PASS" } else { "HAS FAIL" });
+    }
+
+    // f12: algorithm-policy enforcement (Def. algpolicy). A downgrade hop carries a
+    // fully valid signature, so cryptographic verification and authorization still
+    // pass, but the verifier policy must reject the classical algorithm.
+    {
+        use biscuit_auth::format::schema;
+        fn block_algorithms(bytes: &[u8]) -> Result<Vec<i32>, Box<dyn Error>> {
+            let p = schema::Biscuit::decode(bytes)?;
+            let mut v = vec![p.authority.next_key.algorithm];
+            v.extend(p.blocks.into_iter().map(|b| b.next_key.algorithm));
+            Ok(v)
+        }
+        let is_pq = |a: i32| a >= 2; // Ed25519=0, Secp256r1=1 classical; 2..12 PQ/hybrid
+
+        let pqroot = KeyPair::new_with_algorithm(Algorithm::Mldsa87);
+        // compliant token: PQ root + PQ hop -> policy accepts
+        let mut tok_ok = Biscuit::builder().fact("right(\"file1\", \"read\")")?.build(&pqroot)?;
+        tok_ok = tok_ok.append_with_keypair(&KeyPair::new_with_algorithm(Algorithm::Fndsa512), atten())?;
+        let bytes_ok = tok_ok.seal()?.to_vec()?;
+        let compliant = block_algorithms(&bytes_ok)?.iter().copied().all(is_pq);
+        // downgrade token: PQ root but a classical Ed hop appended with a valid signature
+        let mut tok_dn = Biscuit::builder().fact("right(\"file1\", \"read\")")?.build(&pqroot)?;
+        tok_dn = tok_dn.append_with_keypair(&KeyPair::new_with_algorithm(Algorithm::Ed25519), atten())?;
+        let bytes_dn = tok_dn.seal()?.to_vec()?;
+        let parsed_dn = Biscuit::from(&bytes_dn, pqroot.public())?;
+        let crypto_ok = authorize_op(&parsed_dn, "read").is_ok();
+        let policy_rejects = !block_algorithms(&bytes_dn)?.iter().copied().all(is_pq);
+        let f12ok = compliant && crypto_ok && policy_rejects;
+        if !f12ok { failures += 1; }
+        rec(&mut out, "policy", "f12_algorithm_policy", f12ok,
+            format!("compliant accepted; downgrade crypto-valid={crypto_ok} policy-rejects={policy_rejects}"));
+        println!("[         policy] f12 {}", if f12ok { "PASS" } else { "FAIL" });
     }
 
     let outdir = "../../experiments/data";

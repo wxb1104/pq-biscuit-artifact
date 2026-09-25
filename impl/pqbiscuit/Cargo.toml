@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 biscuit-auth = { path = "vendor/biscuit-auth" }
+prost = "0.10"

@@ -556,6 +556,7 @@ name = "pqbiscuit"
 version = "0.1.0"
 dependencies = [
  "biscuit-auth",
+ "prost",
 ]
 
 [[package]]
